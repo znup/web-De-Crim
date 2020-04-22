@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 
+from django.conf.urls.static import static
+
 urlpatterns = [
     #paths del core    
     path('', include('core.urls')),    
@@ -30,7 +32,7 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     #paths del admin
     path('admin/', admin.site.urls),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     from django.conf.urls.static import static
